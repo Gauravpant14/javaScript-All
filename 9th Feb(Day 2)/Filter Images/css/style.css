@@ -1,0 +1,50 @@
+.topBar{
+    display: flex;
+    justify-content: space-between;
+    background: #BE93C5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    
+}
+
+.active{
+    background-color: rgb(250, 60, 60);
+}
+
+.tabs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab{
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 1px solid black;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.tab:hover{
+    cursor: pointer;
+    background-color: rgb(250, 60, 60);
+    color: #fff;
+}
+
+.gallary{
+    border: 1px solid black;
+    border-radius: 5px;
+    
+
+}
+
+.row-1,.row-2,.row-3{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .allNature, .allPeople, .allTech{
+    border: 1px solid black;
+} */

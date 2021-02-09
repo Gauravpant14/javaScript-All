@@ -1,0 +1,18 @@
+.container{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: burlywood;
+
+}
+
+.clock{
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: cadetblue;
+}
