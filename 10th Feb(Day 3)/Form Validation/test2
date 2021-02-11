@@ -1,0 +1,27 @@
+const form1 = document.getElementById("form");
+const fName = document.getElementById("fName");
+const lName = document.getElementById("lName");
+const email = document.getElementById("email");
+const pass = document.getElementById("pass");
+const cPass = document.getElementById("cPass");
+
+form1.addEventListener('submit', function f(e){
+  e.preventDefault();
+  checkVal();
+})
+
+
+function checkVal() {
+  const fNVal = fName.value.trim();
+  const lNVal = lName.value.trim();
+  const emaiVal = email.value.trim();
+  const passVal = pass.value.trim();
+  const cPVal = cPass.value.trim();
+
+  if(fNVal.length <= 3){
+      document.getElementById('fN').innerHTML = "name should be greater then 3 charcter";
+      
+  }
+
+  return false;
+}

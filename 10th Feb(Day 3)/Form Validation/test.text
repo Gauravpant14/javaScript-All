@@ -1,0 +1,35 @@
+if (fName == "") {
+    document.getElementById("fN").innerHTML =
+      "**Please Enter Your First Name**";
+    return false;
+  }
+
+  if (fName.length < 3) {
+    document.getElementById("fN").innerHTML =
+      "**User Name Must be Greater then 3 character long!**";
+  }
+
+  if (!isNaN(fName)) {
+    document.getElementById("fN").innerHTML = "**Only Characters Are Allowed**";
+  }
+
+  if (lName == "") {
+    document.getElementById("lN").innerHTML = "**Please Enter Your Last Name**";
+    return false;
+  }
+
+  if (email == "") {
+    document.getElementById("eM").innerHTML = "**Please Enter Your Email**";
+    return false;
+  }
+
+  if (pass == "") {
+    document.getElementById("password").innerHTML =
+      "**Don't Leave your password blank**";
+    return false;
+  }
+
+  if(pass.length < 8) {
+    document.getElementById("password").innerHTML =
+      "**Password Must be Greater then 8 character long!**";
+  }

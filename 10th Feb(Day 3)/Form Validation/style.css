@@ -1,0 +1,9 @@
+.container-ex{
+    max-width: 700px;
+    margin: auto;
+    height: 50vh;
+}
+
+body{
+    background: #232526;  /* fallback for old browsers */
+
