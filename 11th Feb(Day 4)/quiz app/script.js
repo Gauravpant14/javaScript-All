@@ -1,8 +1,17 @@
 const startBtn = document.getElementById('start-btn');
+const nextBtn = document.getElementById('next-btn');
 const questionContainer = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
+let id = 0;
+
 startBtn.addEventListener('click', startGame);
+
+nextBtn.addEventListener('click', () =>{
+    currentQuestionIndex++;
+    setNextQuestion();
+})
+
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -15,20 +24,33 @@ function startGame() {
 }
 
 function setNextQuestion() {
+resetState()    
 showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
 function showQuestion(question) {
     questionElement.innerText = question.question;
     question.answers.forEach(answer => {
-        const button = document.createElement('button');
-        button.innerText = answer.text;
-        button.classList.add('btn');
+        // const button = document.createElement('button');
+        // button.innerText = answer.text;
+        // button.classList.add('btn');
+        const button = document.createElement('input');
+        button.type = 'radio';
+        button.id = `id${id++}`;
+
+        // button.value = 'email';
+        
+        var label = document.createElement('label');
+        label.htmlFor = `id${id++}`;
+        var description = document.createTextNode(answer.text);
+        label.appendChild(description);
+        
+
         if(answer.correct) {
             button.dataset.correct = answer.correct;
 
         }
-        button.addEventListener('click',selectAnswer)
+        button.addEventListener('click',selectAnswer);
         answerButtonsElement.appendChild(button)
     });
 
@@ -36,18 +58,74 @@ function showQuestion(question) {
 
 }
 
-function selectAnswer(){
+function resetState(){
+    clearStatusClass(document.body)
+    nextBtn.classList.add('hide');
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+    }
+}
 
+function selectAnswer(e){
+    const selectButton = e.target;
+    const correct = selectButton.dataset.correct;
+    setStatusClass(document.body, correct);
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button,button.dataset.correct)
+    })
+
+    if(shuffledQuestions.length > currentQuestionIndex +1) {
+        nextBtn.classList.remove('hide');
+    }
+    else{
+        startBtn.innerText = 'Restart';
+        startBtn.classList.remove('hide');
+    }
+
+}
+
+function setStatusClass(element, correct){
+    clearStatusClass(element);
+    if(correct){
+        element.classList.add('correct');
+
+    }
+    else{
+        element.classList.add('wrong');
+    }
+}
+
+function clearStatusClass(element){
+    element.classList.remove('correct');
+    element.classList.remove('wrong');
 }
 
 const questions = [
     {
-        question: 'what is 2+5 ?',
+        question: '	What is part of a database that holds only one type of information?',
         answers:[
-            {text: '7', correct: true},
-            {text: '22', correct: false},
-            {text: '23', correct: false},
-            {text: '26', correct: false}
+            {text: 'Report', correct: false},
+            {text: 'Field', correct: true},
+            {text: 'Record', correct: false},
+            {text: 'File', correct: false}
+        ]
+    },
+    {
+        question: '	Which one of these is a JavaScript package manager?',
+        answers:[
+            {text: 'Node.js', correct: false},
+            {text: 'typeScript', correct: false},
+            {text: 'npm', correct: true},
+            {text: 'yelp', correct: false}
+        ]
+    },
+    {
+        question: '	The Bharat Oman Refineries Ltd operates which of the following refineries?',
+        answers:[
+            {text: 'Bongaigaon Refinery', correct: false},
+            {text: 'Bina Refinery', correct: true},
+            {text: 'Haldia Refinery', correct: false},
+            {text: 'Numaligarh Refinery', correct: false}
         ]
     }
 ]

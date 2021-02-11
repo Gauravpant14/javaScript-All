@@ -6,7 +6,7 @@ checkEmail = () => {
   let str = email.value;
   
   if(regX.test(str)){
-    document.getElementById('em').innerHTML = "your email is not valid";
+    document.getElementById('em').innerHTML = "your email is valid";
     email.classList.remove('is-invalid');
   }
   else{
