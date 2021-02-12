@@ -17,7 +17,7 @@ let shuffledQuestions, currentQuestionIndex
 
 function startGame() {
  startBtn.classList.add('hide');
- shuffledQuestions = questions.sort(() => Math.random() - .5)
+ shuffledQuestions = questions
  currentQuestionIndex = 0
  questionContainer.classList.remove('hide');
  setNextQuestion();
@@ -31,19 +31,9 @@ showQuestion(shuffledQuestions[currentQuestionIndex]);
 function showQuestion(question) {
     questionElement.innerText = question.question;
     question.answers.forEach(answer => {
-        // const button = document.createElement('button');
-        // button.innerText = answer.text;
-        // button.classList.add('btn');
-        const button = document.createElement('input');
-        button.type = 'radio';
-        button.id = `id${id++}`;
-
-        // button.value = 'email';
-        
-        var label = document.createElement('label');
-        label.htmlFor = `id${id++}`;
-        var description = document.createTextNode(answer.text);
-        label.appendChild(description);
+         const button = document.createElement('button');
+         button.innerText = answer.text;
+         button.classList.add('btn');
         
 
         if(answer.correct) {
@@ -102,7 +92,7 @@ function clearStatusClass(element){
 
 const questions = [
     {
-        question: '	What is part of a database that holds only one type of information?',
+        question: 'Q1 :	What is part of a database that holds only one type of information?',
         answers:[
             {text: 'Report', correct: false},
             {text: 'Field', correct: true},
@@ -111,7 +101,7 @@ const questions = [
         ]
     },
     {
-        question: '	Which one of these is a JavaScript package manager?',
+        question: 'Q2 :	Which one of these is a JavaScript package manager?',
         answers:[
             {text: 'Node.js', correct: false},
             {text: 'typeScript', correct: false},
@@ -120,7 +110,7 @@ const questions = [
         ]
     },
     {
-        question: '	The Bharat Oman Refineries Ltd operates which of the following refineries?',
+        question: 'Q3 : The Bharat Oman Refineries Ltd operates which of the following refineries?',
         answers:[
             {text: 'Bongaigaon Refinery', correct: false},
             {text: 'Bina Refinery', correct: true},
