@@ -1,0 +1,39 @@
+let d = fetch("/a.json")
+    .then(response => response.json())
+    .then(data => {
+         
+           
+                document.getElementById("data").innerHTML = data[0].Name;
+            
+            
+           
+        
+
+        
+})
+
+
+
+
+
+
+function searchFun(){
+    let filter = document.getElementById('myInput').value.toUpperCase();
+
+    let data = document.getElementById('data');
+
+    let tr = data.getElementsByTagName('tr');
+
+     for(var i=0; i<tr.length;i++){
+         let td = tr[i].getElementsByTagName('td')[0];
+         if(td){
+             let textvalue = td.textContent || td.innerHTML;
+             if(textvalue.toUpperCase().indexOf(filter)>-1){
+                 tr[i].style.display = "";
+             }else{
+                 tr[i].style.display = "none";
+             }
+         }
+
+     }
+}
