@@ -1,0 +1,52 @@
+*{
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.user{
+    background-color: rgb(219, 170, 170);
+}
+#app{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1100px;
+    /* text-align: center; */
+    margin: auto;
+}
+   
+
+
+
+
+.card{
+    background-color: rgb(228, 228, 253) !important;
+    color: rgb(8, 0, 0);
+    
+ 
+   
+    
+}
+
+.header{
+    background-color: rgb(3, 14, 167);
+    color: #fff;
+    padding: 40px 10px;
+}
+
+.card-items{
+    width: 23%;
+    margin: 5px;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.apiBtn{
+    padding: 4px 20px;
+    color: #fff;
+    background-color: rgb(72, 72, 72);
+    border-radius: 5px;
+}
+
