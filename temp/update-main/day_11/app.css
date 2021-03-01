@@ -1,0 +1,29 @@
+h3 {
+  font-weight: 400;
+}
+h5 {
+  font-weight: 400;
+}
+h4 {
+  font-weight: 400;
+}
+
+body {
+}
+
+.colorMe {
+  box-shadow: 1px 0px 7px 1px red;
+  border-radius: 6px;
+}
+.colorMe1 {
+  box-shadow: 1px 0px 7px 2px #f5c108;
+  border-radius: 6px;
+}
+.colorMe2 {
+  box-shadow: 1px 0px 7px 2px #348754;
+  border-radius: 6px;
+}
+
+* {
+  color: #f1c552;
+}

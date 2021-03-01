@@ -1,56 +1,91 @@
 let body = document.getElementById("app");
-function fetchData() {
+let i=1;
+var apiData = ''
+
+
+
+
+
+
+
+function fetchAllData() {
   fetch("https://jsonplaceholder.typicode.com/posts")
   .then(response=> {
     console.log(response); 
     if(!response.ok){
          throw Error("error occoucred")
-     } 
-     
+     }     
      return response.json();
-  }).then(e => {
+  }).then(data => renderData(data));
 
-//       let singleVal = e[0];
-//     body.innerHTML = `
-//       <div class="singleVal">
-//       <div class="title">
-//           <h3> ${singleVal.title} </h3>
-//       </div>
-//       <div class="id">
-          
-//       </div>
-//       <div class="body">
-//  <h4> ${singleVal.body} </h4>
-//       </div>
-
-//   </div>
-
-        
-
-      const apiData = e.map(user => {
-          
-          return `
-
-          
-          <div class="card-items">
-          
-            <div class="card h-100" width="25%">
-              <div class="card-body">
-                <h5 class="card-title text-left"><strong> TITLE : </strong> ${user.title} </h5>
-                
-              <strong> USER ID : </strong> ${user.userId}  </br>
-                <p class="card-text text-left "> <strong> BODY : </strong>${user.body}</a>
-                
-              </div>
-            </div>
-          </div>
-          
-        </div>`
-      }).join('');
-   
-      document.querySelector('#app').insertAdjacentHTML("afterbegin",apiData);
-  }).catch(error => {
-      console.log(error);
-  }) ;
 }
+
+let card_Items = document.getElementsByClassName('card-items');
+console.log(card_Items);
+//render fullinfo on clicking button 
+function readFullInfo(){
+  
+  card_Items.forEach((e) => {
+  var url = `https://jsonplaceholder.typicode.com/posts/${e.userId}` }
+  )
+    
+  
+  fetch(url)
+  .then(response => {
+    return response.json();
+  })
+  .then( (data11) => {
+   
+  apiData+=  `
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">${data11.title}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <p><strong>ID : </strong>${data11.userId}</p> 
+           ${data11.body}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div> `
+    
+  })
+  document.querySelector('#app').insertAdjacentHTML("afterbegin",apiData);
+
+}
+
+
+
+const renderData = (e) => { 
+  e.forEach(user => {         
+      apiData += `        
+      <div class="card-items">
+      
+        <div class="card h-100" width="25%">
+          <div class="card-body">
+          <p>${user.id}</p>
+            <h5 class="card-title text-left"><strong> TITLE : </strong> ${user.title} </h5>
+            
+          <strong> USER ID : </strong> ${user.userId}  </br>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="readFullInfo()" >
+          Read More
+        </button>
+        
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>`})
+    document.querySelector('#app').insertAdjacentHTML("afterbegin",apiData);
+  }
 
